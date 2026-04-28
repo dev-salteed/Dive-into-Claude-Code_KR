@@ -1,7 +1,7 @@
 # Dive into Claude Code
 
 <p align="center">
-  <img src="./assets/main_structure.png" width="85%" alt="High-level system structure of Claude Code">
+  <img src="./assets/main_structure_KR.png" width="85%" alt="Claude Code의 시스템 상위 구조">
 </p>
 
 <p align="center">
@@ -87,7 +87,7 @@ Claude Code는 모든 프로덕션 코딩 에이전트가 마주해야 하는 **
 시스템은 **5개의 아키텍처 레이어**에 걸친 **7개의 컴포넌트**(사용자 → 인터페이스 → 에이전트 루프 → 권한 시스템 → 도구 → 상태 & 영속성 → 실행 환경)로 분해된다.
 
 <p align="center">
-  <img src="./assets/layered_architecture.png" width="100%" alt="5-layer subsystem decomposition">
+  <img src="./assets/layered_architecture_KR.png" width="100%" alt="5계층 서브시스템 분해">
 </p>
 
 > [!NOTE]
@@ -145,7 +145,7 @@ Claude Code는 모든 프로덕션 코딩 에이전트가 마주해야 하는 **
 <summary><h2>에이전트 쿼리 루프</h2></summary>
 
 <p align="center">
-  <img src="./assets/iteration.png" width="60%" alt="Runtime turn flow">
+  <img src="./assets/iteration_KR.png" width="60%" alt="런타임 턴 흐름">
 </p>
 
 핵심은 **ReAct 패턴 기반의 while 루프**이다: 컨텍스트 조립 → 모델 호출 → 도구 디스패치 → 권한 확인 → 실행 → 반복. 스트리밍 이벤트를 yield하는 `AsyncGenerator`로 구현된다.
@@ -174,7 +174,7 @@ Claude Code는 모든 프로덕션 코딩 에이전트가 마주해야 하는 **
 <summary><h2>안전성과 권한</h2></summary>
 
 <p align="center">
-  <img src="./assets/permission.png" width="75%" alt="Permission gate">
+  <img src="./assets/permission_KR.png" width="75%" alt="권한 게이트">
 </p>
 
 **7가지 권한 모드** 가 점진적 신뢰 스펙트럼을 형성한다: `plan` → `default` → `acceptEdits` → `auto` (ML 분류기) → `dontAsk` → `bypassPermissions` (+ 내부용 `bubble`).
@@ -205,7 +205,7 @@ Claude Code는 모든 프로덕션 코딩 에이전트가 마주해야 하는 **
 <summary><h2>확장성</h2></summary>
 
 <p align="center">
-  <img src="./assets/extensibility.png" width="85%" alt="Three injection points: assemble, model, execute">
+  <img src="./assets/extensibility_KR.png" width="85%" alt="세 가지 주입 지점: assemble, model, execute">
 </p>
 
 **컨텍스트 비용에 따라 점진적으로 분포한 4가지 메커니즘:** 훅 (영) → Skills (낮음) → Plugins (중간) → MCP (높음). 에이전트 루프 내 세 곳의 주입 지점: **assemble()** (모델이 보는 것), **model()** (모델이 도달할 수 있는 것), **execute()** (액션이 실행될지/어떻게 실행될지).
@@ -228,7 +228,7 @@ Claude Code는 모든 프로덕션 코딩 에이전트가 마주해야 하는 **
 <summary><h2>컨텍스트와 메모리</h2></summary>
 
 <p align="center">
-  <img src="./assets/context.png" width="95%" alt="Context construction">
+  <img src="./assets/context_KR.png" width="95%" alt="컨텍스트 구성">
 </p>
 
 **9개의 정렬된 소스**가 컨텍스트 윈도우를 구성한다. CLAUDE.md 지시문은 시스템 프롬프트(결정론적)가 아니라 **사용자 컨텍스트**(확률적 준수)로 전달된다. 메모리는 **파일 기반**(벡터 DB 없음)이며 -- 완전히 검사 가능하고, 편집 가능하며, 버전 관리가 가능하다.
@@ -249,7 +249,7 @@ Claude Code는 모든 프로덕션 코딩 에이전트가 마주해야 하는 **
 <summary><h2>서브에이전트 위임</h2></summary>
 
 <p align="center">
-  <img src="./assets/subagent.png" width="90%" alt="Subagent architecture">
+  <img src="./assets/subagent_KR.png" width="90%" alt="서브에이전트 아키텍처">
 </p>
 
 **6가지 내장 유형** (Explore, Plan, General-purpose, Guide, Verification, Statusline)에 더해 `.claude/agents/*.md`로 정의하는 커스텀 에이전트. **사이드체인(sidechain) 트랜스크립트**: 부모로 돌아오는 것은 요약뿐이다 (부모의 컨텍스트는 서브에이전트의 장황함으로부터 *보호된다*). 세 가지 격리 모드: 워크트리(worktree), 원격(remote), 인프로세스. 조정은 POSIX `flock()` 으로 이루어진다.
@@ -270,7 +270,7 @@ Claude Code는 모든 프로덕션 코딩 에이전트가 마주해야 하는 **
 <summary><h2>세션 영속성</h2></summary>
 
 <p align="center">
-  <img src="./assets/session_compact.png" width="75%" alt="Session persistence and context compaction">
+  <img src="./assets/session_compact_KR.png" width="75%" alt="세션 영속성 및 컨텍스트 컴팩션">
 </p>
 
 세 가지 채널: 추가 전용(append-only) JSONL 트랜스크립트, 전역 프롬프트 히스토리, 서브에이전트 사이드체인. **권한은 재개 시 결코 복원되지 않는다** -- 신뢰는 세션마다 다시 수립된다. 설계는 **쿼리 능력보다 감사 가능성(auditability)** 을 우선한다.

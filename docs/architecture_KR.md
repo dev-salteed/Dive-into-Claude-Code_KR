@@ -16,7 +16,7 @@
 ## 시스템 상위 구조 (7개 컴포넌트)
 
 <p align="center">
-  <img src="../assets/main_structure.png" width="85%" alt="High-level system structure">
+  <img src="../assets/main_structure_KR.png" width="85%" alt="시스템 상위 구조">
 </p>
 
 1. **사용자(User)** -- 프롬프트 제출, 권한 승인, 결과 검토
@@ -56,7 +56,7 @@
 ## 턴(Turn) 실행: 9단계 파이프라인
 
 <p align="center">
-  <img src="../assets/iteration.png" width="60%" alt="Runtime turn flow">
+  <img src="../assets/iteration_KR.png" width="60%" alt="런타임 턴 흐름">
 </p>
 
 각 턴은 **9단계 파이프라인**을 따른다.
@@ -85,7 +85,7 @@
 ## 권한 시스템 심층 분석
 
 <p align="center">
-  <img src="../assets/permission.png" width="75%" alt="Permission gate overview">
+  <img src="../assets/permission_KR.png" width="75%" alt="권한 게이트 개요">
 </p>
 
 ### 7개의 권한 모드
@@ -113,7 +113,7 @@
 ## 확장성: MCP, 플러그인, 스킬, 훅
 
 <p align="center">
-  <img src="../assets/extensibility.png" width="85%" alt="Three injection points in the agent loop">
+  <img src="../assets/extensibility_KR.png" width="85%" alt="에이전트 루프의 세 가지 주입 지점">
 </p>
 
 ### 4개의 확장 메커니즘 (점진적 컨텍스트 비용)
@@ -140,7 +140,7 @@
 ## 컨텍스트 구성과 메모리
 
 <p align="center">
-  <img src="../assets/context.png" width="75%" alt="Context construction and memory hierarchy">
+  <img src="../assets/context_KR.png" width="75%" alt="컨텍스트 구성 및 메모리 계층">
 </p>
 
 ### 9개의 순서가 있는 컨텍스트 소스
@@ -167,7 +167,7 @@
 ## 서브에이전트 위임
 
 <p align="center">
-  <img src="../assets/subagent.png" width="75%" alt="Subagent delegation architecture">
+  <img src="../assets/subagent_KR.png" width="75%" alt="서브에이전트 위임 아키텍처">
 </p>
 
 ### 6개의 빌트인 타입 + 커스텀 에이전트
@@ -198,7 +198,7 @@
 ## 세션 영속성
 
 <p align="center">
-  <img src="../assets/session_compact.png" width="75%" alt="Session persistence and compaction">
+  <img src="../assets/session_compact_KR.png" width="75%" alt="세션 영속성 및 컴팩션">
 </p>
 
 ### 3개의 영속성 채널
